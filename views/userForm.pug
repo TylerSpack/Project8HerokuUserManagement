@@ -1,0 +1,6 @@
+mixin userForm(action, inputs, submitText)
+    form(action= action, method='post')
+        each inputObj in inputs
+            label(for= inputObj.id)= inputObj.title
+            input(type=inputObj.type, name=inputObj.id, id=inputObj.id, value=inputObj.value)
+        input(type='submit' value= submitText)

@@ -1,0 +1,38 @@
+
+html
+    head
+        title Show Users
+        style
+            include style.css
+    body
+        form(action= 'lookup', method='post')
+            select(name= 'userProperty')
+                option First
+                option Last
+            input(type='text' name='lookupField')
+            input(type='submit')
+        form(action= 'sort', method='post')
+            select(name= 'userProperty')
+                option First
+                option Last
+            select(name= 'sortDirection')
+                option Ascending
+                option Descending
+            input(type='submit')
+        table
+            tr
+                each inputObj in inputs
+                    th= inputObj.id
+                th Remove
+                th Edit
+            each user in users
+                tr
+                    each inputObj in inputs
+                        td= user[inputObj.id]
+                    td
+                        a(href='/edit/' + user.id) Edit
+                    td
+                        a(href='/remove/' + user.id) Remove
+        a(href='/createUser') Create New User
+        br
+        a(href='/addInitialUsers') Add 10 Users
